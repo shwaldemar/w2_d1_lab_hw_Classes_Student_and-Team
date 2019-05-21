@@ -5,23 +5,24 @@ require_relative('../w2d1_ex_B_team')
 
 class TestTeam < MiniTest::Test
 
-  def initialize(players, team, coach)
-    @players = players
-    @team = team
-    @coach = coach
-  end
+#Whaaaaat is this here for????
+  # def initialize(players, team, coach)
+  #   @players = players
+  #   @team = team
+  #   @coach = coach
+  # end
 
-  def setup( players, team, coach )
+  def setup()
     @simon_hall = Team.new( "Simon Hall", "ES31", "Sandy" )
   end
 
   def test_team
     @jamie_patterson = Team.new("Jamie Patterson", "ES31", "Sandy")
-    actual = @jamie_patterson.team
+    actual = @jamie_patterson.team("ES31")
     assert_equal( "ES31", actual)
   end
 
-  def test_players
+  def test_team_players
     @jamie_patterson = Team.new("Jamie Patterson", "ES31", "Sandy")
     actual = @jamie_patterson.players
     assert_equal( "Jamie Patterson", actual)
@@ -48,14 +49,14 @@ class TestTeam < MiniTest::Test
   def test_set_team_name
     @jamie_patterson = Team.new("Jamie Patterson", "ES31", "Sandy")
     @jamie_patterson.set_team_name("Manchester City FC")
-    actual = @jamie_patterson.team
+    actual = @jamie_patterson.team("Manchester City FC")
     assert_equal("Manchester City FC", actual)
   end
 
   def test_add_new_player
-    new_player = ("Kylie Minogue", "ES31", "Sandy")
-    actual = ("Kylie Minogue")
+    actual = @new_player = Team.new("Kylie Minogue", "ES31", "Sandy")
     assert_equal( "Kylie Minogue", actual)
+  end
 
 
     def test_players
@@ -67,7 +68,6 @@ class TestTeam < MiniTest::Test
 
 
 
-end
 #B EXERCISES
 ## 1. Make a class to represent a Team that has the properties
 ## Team name (String), Players (array of strings) and a Coach (String).
@@ -78,7 +78,7 @@ end
 # 5. Create a method that adds a new player to the players array.
 ## 6. Add a method that takes in a string of a player's name and
 # checks to see if they are in the players array.
-..
+
 # 7. Add a points property into your class that starts at 0.
 # 8. Create a method that takes in whether the team has
 # won or lost and updates the points property for a win.
